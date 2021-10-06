@@ -4,6 +4,7 @@
             <th>#</th>
             <th>Bandera</th>
             <th>Nombre</th>
+            <th>Capital</th>
             <th>Población</th>
             <th></th>
         </tr>
@@ -12,10 +13,12 @@
         <tr *ngFor="let pais of paises; let i = index">
             <td>{{i + 1}}</td>
             <td><img src="{{pais.flags.png}}" class="small-flag"></td>
-            <td *ngIf="pais.name.common; else elseBlock">{{pais.capital}}, {{pais.name.common}}</td>
-            <ng-template #elseBlock><td>{{pais.capital}}, {{pais.name}}</td></ng-template>
+            <td>{{pais.name.common}}</td>
+            <td *ngIf="pais.capital; else sinCapital">{{pais.capital}}</td>
+            <ng-template #sinCapital><td><i style="color: gray">No Definida</i></td></ng-template>
             <td>{{pais.population | number }}</td>
-            <td><a [routerLink]="['/pais', pais.cioc]">Detalles</a></td>
+            <td *ngIf="pais.cioc; else otroCodPais"><a [routerLink]="['/pais', pais.cioc]">Detalles</a></td>
+            <ng-template #otroCodPais><a [routerLink]="['/pais', pais.cca2]">Detalles</a></ng-template>   
         </tr>
     </tbody>
 </table>

@@ -27,9 +27,14 @@
                 <li class="list-group-item">
                     <strong>Población: </strong> {{pais.population | number}}
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" *ngIf="pais.capital; else sinCapital">
                     <strong>Capital: </strong> {{pais.capital}}
                 </li>
+                <ng-template #sinCapital>
+                    <li class="list-group-item">
+                        <strong>Capital: </strong> <i style="color: gray">No Definida</i>
+                    </li>
+                </ng-template>
                 <li class="list-group-item">
                     <strong>Área: </strong> {{pais.area / 1000 | number}} km<sup>2</sup>
                 </li>
