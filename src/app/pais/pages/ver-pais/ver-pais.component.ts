@@ -18,7 +18,7 @@ export class VerPaisComponent implements OnInit {
   constructor( 
     private activatedRoute: ActivatedRoute,
     private PaisService: PaisService 
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     
